@@ -18,7 +18,8 @@ class User(db.Model):
     password = db.Column(db.String)
 
     bid = db.relationship('Bid', backref='users')
-    melons = db.relationship('Melon', backref='users')
+    # melons = db.relationship('Melon', backref='users')   # this was creating AmbiguousForeignKeysError; resolved with specifying foreign_keys argument
+    melons = db.relationship('Melon', foreign_keys="Melon.seller_id")
 
     def __repr__(self):
         return f'<User user_id={self.user_id} name={self.name} email={self.email}>'
