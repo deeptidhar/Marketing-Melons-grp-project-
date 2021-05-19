@@ -16,7 +16,7 @@ model.connect_to_db(server.app)
 model.db.create_all()
 
 faker = Faker()
-for _ in range(20):
+for _ in range(20): #can you do `for i in range(20)`?
     email = faker.email()
     password = faker.password()
     name = faker.name()

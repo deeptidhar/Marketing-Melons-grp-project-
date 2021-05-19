@@ -75,5 +75,27 @@ def get_melon_by_id(melon_id):
     return Melon.query.get(melon_id)
 
 
+def create_bid(user_id, melon_id, bid_amount, timestamp):
+    """Create a new bid"""
+
+    bid = Bid(user_id = user_id, melon_id = melon_id, bid_amount = bid_amount, timestamp = timestamp)
+    db.session.add(bid)
+    db.session.commit()
+
+    return bid
+
+
+def get_all_bids():
+    """Get all bids"""
+
+    return Bid.query.all()
+
+
+def get_bid_by_id(bid_id):
+    """Get a bid using id"""
+
+    return Bid.query.get(bid_id)
+
+
 
 
