@@ -18,8 +18,8 @@ class User(db.Model):
     password = db.Column(db.String)
 
     bid = db.relationship('Bid', backref='users')
-    # melons = db.relationship('Melon', backref='users')   # this was creating AmbiguousForeignKeysError; resolved with specifying foreign_keys argument
-    melons = db.relationship('Melon', foreign_keys="Melon.seller_id")
+    # melons = db.relationship('MelonListing', backref='users')   # this was creating AmbiguousForeignKeysError; resolved with specifying foreign_keys argument
+    melons = db.relationship('MelonListing', foreign_keys="MelonListing.seller_id")
 
     def __repr__(self):
         return f'<User user_id={self.user_id} name={self.name} email={self.email}>'
@@ -42,10 +42,10 @@ class MelonCategory(db.Model):
         return f'<Category category_id={self.category_id} name={self.name} seedless={self.is_seedless}>'
 
 
-class Melon(db.Model):
+class MelonListing(db.Model):
     """Melon for sale in marketplace."""
 
-    __tablename__ = 'melons'
+    __tablename__ = 'melon_listing'
 
     melon_id = db.Column(db.Integer,
                         autoincrement=True,
@@ -59,7 +59,7 @@ class Melon(db.Model):
     is_sold = db.Column(db.Boolean)
 
     def __repr__(self):
-        return f'<Melon melon_id={self.melon_id} name={self.name} category={self.melon_category}>'
+        return f'<MelonListing melon_id={self.melon_id} name={self.name} category={self.melon_category}>'
 
 
 class Bid(db.Model):
