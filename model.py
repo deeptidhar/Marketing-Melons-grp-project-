@@ -45,7 +45,7 @@ class MelonCategory(db.Model):
 class MelonListing(db.Model):
     """Melon for sale in marketplace."""
 
-    __tablename__ = 'melon_listing'
+    __tablename__ = 'melon_listings'
 
     melon_id = db.Column(db.Integer,
                         autoincrement=True,
@@ -72,7 +72,7 @@ class Bid(db.Model):
                         primary_key=True)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    melon_id = db.Column(db.Integer, db.ForeignKey('melons.melon_id'))
+    melon_id = db.Column(db.Integer, db.ForeignKey('melon_listings.melon_id'))
     bid_amount = db.Column(db.Float)
     timestamp = db.Column(db.DateTime)
 
