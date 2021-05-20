@@ -1,6 +1,6 @@
 """CRUD operations"""
 
-import model
+from model import *
 from flask_sqlalchemy import SQLAlchemy
 
 def create_user(email, password, name):
@@ -31,10 +31,10 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-def create_melon_category(is_seedless, name, color, season):
+def create_melon_category(is_seedless, name, color, melon_img_url):
     """Create a new melon category"""
     
-    melon_category = MelonCategory(is_seedless = is_seedless, name = name, color = color, season = season)
+    melon_category = MelonCategory(is_seedless = is_seedless, name = name, color = color, melon_img_url = melon_img_url)
     db.session.add(melon_category)
     db.session.commit()
 
