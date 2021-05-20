@@ -56,7 +56,7 @@ def get_category_by_id(category_id):
 def create_melon_listing(name, seller_id, winner_id, end_date, description, melon_category, is_sold):
     """Create a new melon listing"""
 
-    melon_listing = Melon(name = name, seller_id = seller_id, winner_id = winner_id, end_date = end_date, description = description, melon_category = melon_category, is_sold = is_sold)
+    melon_listing = MelonListing(name = name, seller_id = seller_id, winner_id = winner_id, end_date = end_date, description = description, melon_category = melon_category, is_sold = is_sold)
     db.session.add(melon_listing)
     db.session.commit()
 
@@ -66,13 +66,13 @@ def create_melon_listing(name, seller_id, winner_id, end_date, description, melo
 def get_melon_listings():
     """Get all melon listings"""
 
-    return Melon.query.all()
+    return MelonListing.query.all()
 
 
 def get_melon_by_id(melon_id):
     """Get melon listing using id"""
 
-    return Melon.query.get(melon_id)
+    return MelonListing.query.get(melon_id)
 
 
 def create_bid(user_id, melon_id, bid_amount, timestamp):
