@@ -1,0 +1,11 @@
+name,seller_id,winner_id,end_date,description,melon_category,is_sold
+Ali Baba for sale,2,19,datetime.now() + timedelta(hours=1),This Ali Baba Watermelon is the best one around. Pristine condition. Eat within 10 days,1,True
+Come and get it,6,13,datetime.now() + timedelta(hours=2),Excellent Crimson Sweet Watermelon from reputable seller,7,True
+Discount this week only,13,7,datetime.now() + timedelta(hours=3),Been in the biz for 25 years. Anyone will tell you I have the best Arkansas Black Watermelon around,3,True
+Dixie Queen,16,9,datetime.now() + timedelta(hours=4),Buy from the queen of Dixie Queen Watermelons,9,True
+Summer Special!,16,11,datetime.now() + timedelta(hours=5),Enjoy your Golden Honey Watermelon during the golden hour.,11,True
+Get it before its gone,9,,datetime.now() + timedelta(hours=6),Last Congo Watermelon for sale!,5,False
+Local melons for sale,10,,datetime.now() + timedelta(hours=7),Perfect melon for the summer -- Moonbeam Watermelon.,22,False
+Organic!,12,,datetime.now() + timedelta(hours=8),Real texans love a Texas Golden Watermelon,31,False
+Pinch Me Green Melons,12,,datetime.now() + timedelta(hours=9),Eat this Irish Grey Watermelon on St Pattys Day!,14,False
+Gem Melons,1,,datetime.now() + timedelta(hours=10),This Takii Gem Watermelon is a real gem,29,False
