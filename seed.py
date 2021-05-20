@@ -45,4 +45,4 @@ with open('data/test_data_melon_listings.csv', newline='') as listings_csv:
         print(row['description'])
         print(row['melon_category'])
         print(ast.literal_eval(row['is_sold']))
-        #crud.create_melon_listing(row['name'], row['seller_id'], row['winner_id'], row['end_date'], row['description'], row['melon_category'], ast.literal_eval(row['is_sold']))
+        #crud.create_melon_listing(row['name'], row['seller_id'], row['winner_id'])
