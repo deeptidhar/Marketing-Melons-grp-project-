@@ -36,7 +36,7 @@ class MelonCategory(db.Model):
     is_seedless = db.Column(db.Boolean)
     name = db.Column(db.String)
     color = db.Column(db.String)
-    season = db.Column(db.String)
+    melon_img_url = db.Column(db.String)
 
     def __repr__(self):
         return f'<Category category_id={self.category_id} name={self.name} seedless={self.is_seedless}>'
