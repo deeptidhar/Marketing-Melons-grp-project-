@@ -49,7 +49,6 @@ class FlaskTestsDatabase(TestCase):
         
         self.assertEqual('LJohnson234@yahoo.com', self.user.email)
 
-    
 
 
            
