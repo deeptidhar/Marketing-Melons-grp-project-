@@ -1,15 +1,14 @@
 """Script to seed a database"""
 
 import os
-
 import crud
 import model 
 import os
-
-import csv
-
 import server
 from faker import Faker
+import csv
+import ast
+from datetime import datetime
 
 import ast #to convert "True" and "False" strings from the csv to boolean values
 
@@ -37,12 +36,10 @@ with open('data/melon_categories.csv', newline='') as categories_csv:
 with open('data/test_data_melon_listings.csv', newline='') as listings_csv:
     listings_reader = csv.DictReader(listings_csv)
     for row in listings_reader:
-        print(row['name'])
-        print(row['seller_id'])
-        print(row['winner_id'])
-        end_date_test = row['end_date']
-        print(row['end_date'])
-        print(row['description'])
-        print(row['melon_category'])
-        print(ast.literal_eval(row['is_sold']))
-        #crud.create_melon_listing(row['name'], row['seller_id'], row['winner_id'])
+        crud.create_melon_listing(row['name'], row['seller_id'], ast.literal_eval(row['winner_id']), datetime.strptime(row['end_date'], "%m/%d/%Y %H:%M:%S"), row['description'], row['melon_category'], ast.literal_eval(row['is_sold']))
+
+#seeds bids table with test data
+with open('data/test_data_bids.csv', newline='') as bids_csv:
+    bids_reader = csv.DictReader(bids_csv)
+    for row in bids_reader:
+        crud.create_bid(row['user_id'], row['melon_id'], row['bid_amount'], datetime.strptime(row['timestamp'], "%m/%d/%Y %H:%M:%S"))
