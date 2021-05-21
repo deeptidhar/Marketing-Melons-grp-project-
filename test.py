@@ -36,7 +36,7 @@ class FlaskTestsDatabase(TestCase):
         db.drop_all()
         db.engine.dispose()
         
-        
+    ######################################################TESTING USER TABLE####################################################################    
     def test_user_creation(self):
         """Test user profile page and to make sure user object 
         has been created successfully"""
@@ -47,11 +47,18 @@ class FlaskTestsDatabase(TestCase):
         """Testing that the user object 'email' 
         has been constructed properly"""
         
-        self.assertEqual('LJohnson234@yahoo.com', self.user.email)
+        self.assertEqual('LJohnson234@yahoo.com', self.user.emaiL)
+    
+    ######################################################TESTING MELON CATEGORY TABLE####################################################################
+
+    #########################################################TESTING MELON LISTING TABLE####################################################################
+    ################################################################TESTING BID TABLE####################################################################
 
 
 
-           
+
+
+
 if __name__ == "__main__":
     
     connect_to_db(app)
