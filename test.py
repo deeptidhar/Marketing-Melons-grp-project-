@@ -9,7 +9,25 @@ import sys
 import os
 
 
-   
+class FlaskTestsBasic(TestCase):
+    """Flask tests."""
+
+    def setUp(self):
+        """Stuff to do before every test."""
+
+        # Get the Flask test client
+        self.client = app.test_client()
+
+        # Show Flask errors that happen during tests
+        app.config['TESTING'] = True
+
+    def test_index(self):
+        """Test landing page."""
+
+        result = self.client.get("/")
+        self.assertIn(b"Welcome to the Marketplace", result.data)
+        self.assertEqual(result.status_code, 200)
+    
 class FlaskTestsDatabase(TestCase):
     """Flask tests that use the database."""
 
