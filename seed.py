@@ -32,6 +32,7 @@ def create_melon_categories():
                                        row['color'], 
                                        row['melon_img_url'])
 
+
 def create_listings():
     """Seeds MelonListing table"""
     # create_melon_listing(name, seller_id, winner_id, end_date, description, melon_category, is_sold, start_price)
@@ -58,14 +59,16 @@ def create_bids():
                             row['bid_amount'], 
                             datetime.strptime(row['timestamp'], "%m/%d/%Y %H:%M:%S"))
 
+
 def create_example_data():
     create_users()
     create_melon_categories()
     create_listings()
     create_bids()
 
+
 if __name__ == '__main__':
-    os.system('dropdb marketplace')
+    os.system('dropdb marketplace --if-exists')
     os.system('createdb marketplace')
     model.connect_to_db(server.app)
     model.db.create_all()

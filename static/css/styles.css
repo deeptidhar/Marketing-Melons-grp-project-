@@ -33,7 +33,14 @@
 }
 
 ul {
-  list-style: initial;
+  list-style-type: none;
+  background: #085538;
+  padding: 10px;
+}
+
+ul li {
+  background: #eb2d9c;
+  margin: 5px;
 }
 
 @keyframes pulse {

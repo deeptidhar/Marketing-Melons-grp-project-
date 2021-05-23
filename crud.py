@@ -109,6 +109,7 @@ def get_bid_by_id(bid_id):
 
     return Bid.query.get(bid_id)
 
+
 def get_top_bid(listing_id):
     listing = get_melon_by_id(listing_id)
     # get the bids

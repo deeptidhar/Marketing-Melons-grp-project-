@@ -6,13 +6,13 @@ function BidForm(props){
       console.log(bidAmount);
       fetch('/api/bid', 
         {method: 'POST', 
-        body: JSON.stringify({'listingId': 1, 'userId': 1, 'bidAmount': bidAmount}), 
+        body: JSON.stringify({'listingId': 10, 'userId': 1, 'bidAmount': bidAmount}), 
         headers: {'Content-type': 'application/json'} //needed so the server knows where to get the values out from
         })
       .then(response => response.json())
       .then(data => {
         console.log(data);
-          alert(data.success);
+          alert(data.status);
       })
     }
   
