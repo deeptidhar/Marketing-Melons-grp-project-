@@ -17,10 +17,6 @@ class User(db.Model):
     email = db.Column(db.String, unique=True)
     password = db.Column(db.String)
 
-    bid = db.relationship('Bid', backref='users')
-    # melons = db.relationship('MelonListing', backref='users')   # this was creating AmbiguousForeignKeysError; resolved with specifying foreign_keys argument
-    melons = db.relationship('MelonListing', foreign_keys="MelonListing.seller_id")
-
     def __repr__(self):
         return f'<User user_id={self.user_id} name={self.name} email={self.email}>'
 
@@ -52,11 +48,13 @@ class MelonListing(db.Model):
                         primary_key=True)
     name = db.Column(db.String)
     seller_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    winner_id = db.Column(db.Integer, db.ForeignKey('users.user_id')) 
     end_date = db.Column(db.DateTime)
     description = db.Column(db.Text)
     melon_category = db.Column(db.Integer, db.ForeignKey('category.category_id'))
-    is_sold = db.Column(db.Boolean)
+    start_price = db.Column(db.Float)
+
+    category = db.relationship("MelonCategory", backref="listings")
+    seller = db.relationship("User", foreign_keys=[seller_id], backref="melons_for_sale")
 
     def __repr__(self):
         return f'<MelonListing melon_id={self.melon_id} name={self.name} category={self.melon_category}>'
@@ -75,6 +73,10 @@ class Bid(db.Model):
     melon_id = db.Column(db.Integer, db.ForeignKey('melon_listings.melon_id'))
     bid_amount = db.Column(db.Float)
     timestamp = db.Column(db.DateTime)
+
+    listing = db.relationship("MelonListing", backref="bids")
+    bidder = db.relationship("User", backref="bids")
+
 
     def __repr__(self):
         return f'<Bid bid_id={self.bid_id} User user_id={self.user_id} melon_id={self.melon_id} bid_amount={self.bid_amount}> timestamp={self.timestamp}>'
