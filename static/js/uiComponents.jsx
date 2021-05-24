@@ -13,12 +13,12 @@ function Homepage(props) {
 function PageContainer(props) {
   const { children, className, title, ...rest } = props;
   return (
-    <ReactRouterDOM.BrowserRouter>
+    <React.Fragment>
       <h1>{title}</h1>
       <div {...rest} className={`row ${className || ""}`}>
         {children}
       </div>
-    </ReactRouterDOM.BrowserRouter>
+    </React.Fragment>
   );
 }
 /////////////////////////////////////////////////////////////
@@ -65,7 +65,7 @@ function ListingCard(props) {
         <img src={imgUrl} className="card-img-top" />
       <div className="card-title">
         <h3>{name}</h3>
-        <h4><i>{category}</i></h4>
+        <h5><i>{category}</i></h5>
         <p>Description: {description}</p>
         <h6>seller: {seller}</h6>
       </div>
@@ -95,7 +95,7 @@ function ListingCard(props) {
                   let bid = prompt('Enter $ amount');
                   if (regex.test(bid)) { // valid amount
                     bid = +bid; // convert to number
-                    if (bid < topBid) { // too low
+                    if (bid <= topBid) { // too low
                       alert(`Bid must be greater than top bid: ${topBid}`);
                     }
                     else if (bid < startPrice) { // too low
