@@ -60,31 +60,31 @@ function ListingCard(props) {
   return (
     <div className="card melon-card">
         <img src={imgUrl} className="card-img-top" />
-      <div className="card-body">
-        <h5 className="card-title">
-          {name}
-        </h5>
+      <div className="card-title">
+        <h3>{name}</h3>
+        <h4><i>{category}</i></h4>
+        <p>Description: {description}</p>
+        <h6>seller: {seller}</h6>
       </div>
       <div className="card-body pt-0 container-fluid">
         <div className="row">
           <div className="col-12 col-lg-6">
-            <p>{description}</p>
             <ul>
-              <li>category: {category}</li>
               <li>color: {color}</li>
-              <li>has seeds: {isSeedless.toString()}</li>
-              <li>seller: {seller}</li>
-              <li>start price: ${startPrice.toFixed(2)}</li>
-              <li>sale ends: {endDate}</li>
+              <li>seeds: {isSeedless.toString()}</li>
+              <li>min price: ${startPrice.toFixed(2)}</li>
             </ul>
           </div>
           <div className="col-12 col-lg-6">
+            <ul>
+              <li>sale ends: {endDate}</li>
+            </ul>
+          </div>
+          <div className="card-body pt-0 container-fluid">
             <span className="lead price d-inline-block">
               Top Bid: ${topBid == undefined ? 0 : topBid.toFixed(2)}
             </span>
             <p>Top Bidder: {topBidder}</p>
-          </div>
-          <div className="col-12 col-lg-6">
             <button
                 className="btn btn-sm btn-success d-inline-block"
                 onClick={() => {}}

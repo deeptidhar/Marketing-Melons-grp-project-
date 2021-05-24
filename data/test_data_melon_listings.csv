@@ -1,7 +1,7 @@
 name,seller_id,end_date,description,melon_category,start_price
-Ali Baba for sale,2,datetime.now() + timedelta(hours=1),This Ali Baba Watermelon is the best one around. Pristine condition. Eat within 10 days,1,1
+Ali Baba for sale,2,datetime.now() + timedelta(hours=1),Best one around. Pristine condition. Eat within 10 days,1,1
 Come and get it,6,datetime.now() + timedelta(hours=2),Excellent Crimson Sweet Watermelon from reputable seller,7,1
-Discount this week only,13,datetime.now() + timedelta(hours=3),Been in the biz for 25 years. Anyone will tell you I have the best Arkansas Black Watermelon around,3,1
+Discount this week only,13,datetime.now() + timedelta(hours=3),Been in the biz for 25 years. Everyone knows I have the best melons,3,1
 Dixie Queen,16,datetime.now() + timedelta(hours=4),Buy from the queen of Dixie Queen Watermelons,9,1
 Summer Special!,16,datetime.now() + timedelta(hours=5),Enjoy your Golden Honey Watermelon during the golden hour.,11,1
 Get it before its gone,9,datetime.now() + timedelta(hours=6),Last Congo Watermelon for sale!,5,1

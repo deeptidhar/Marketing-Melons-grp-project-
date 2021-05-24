@@ -7,10 +7,10 @@ app = Flask(__name__)
 app.secret_key = "dev"
 
 ###################################################
-# First, we list any routes that we'll for AJAX requests.
+# First, we list routes that are for AJAX requests.
 # These routes will return JSON.
 # Since we want React to do most of the frontend work,
-# we'll mainly be using our Flask app as an API!
+# we'll mainly be using our Flask app as an API.
 @app.route('/api/login', methods=['POST'])
 def login():
     email = request.json.get('email') #thanks to that content-type header!
@@ -28,6 +28,7 @@ def login():
     return jsonify(user_info)
 
 
+# need to work on the front end of bidding for this route
 @app.route('/api/bid', methods=['POST'])
 def place_bid():
     listing_id = request.json.get('listingId')
@@ -47,6 +48,7 @@ def place_bid():
     else:
         result = {'status': 'listing expired'}
     return jsonify(result)
+
 
 @app.route('/api/listings')
 def get_listings():
@@ -78,6 +80,7 @@ def get_listings():
         result.append(listing_info)
         
     return jsonify(result)
+
 
 ###################################################
 # Our Flask app only has one route that renders HTML.
