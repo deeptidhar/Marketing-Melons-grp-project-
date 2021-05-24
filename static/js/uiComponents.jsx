@@ -23,12 +23,14 @@ function PageContainer(props) {
 }
 /////////////////////////////////////////////////////////////
 function MarketplacePage(props) {
-  const { listings } = props;
+  const { user, listings, setTriggerUpdate } = props;
   const listingCards = [];
 
   for (const listing of Object.values(listings)) {
     const listingCard = (
       <ListingCard
+        user = {user}
+        setTriggerUpdate={setTriggerUpdate}
         category={listing.category}
         color={listing.color}
         description={listing.description}
@@ -36,6 +38,7 @@ function MarketplacePage(props) {
         imgUrl = {listing.image_url}
         isSeedless = {listing.is_seedless}
         key={listing.listing_id}
+        listingId = {listing.listing_id}
         name={listing.name}
         seller={listing.seller}
         startPrice={listing.start_price}
@@ -54,9 +57,9 @@ function MarketplacePage(props) {
 }
 /////////////////////////////////////////////////////////////
 function ListingCard(props) {
-  const { category, color, description, endDate, imgUrl, isSeedless,
-          name, seller, startPrice, topBid, topBidder } = props;
-
+  const { user, setTriggerUpdate, category, color, description, endDate, imgUrl, isSeedless,
+        listingId, name, seller, startPrice, topBid, topBidder } = props;
+  
   return (
     <div className="card melon-card">
         <img src={imgUrl} className="card-img-top" />
@@ -87,7 +90,37 @@ function ListingCard(props) {
             <p>Top Bidder: {topBidder}</p>
             <button
                 className="btn btn-sm btn-success d-inline-block"
-                onClick={() => {}}
+                onClick={() => {
+                  const regex  = /^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;
+                  let bid = prompt('Enter $ amount');
+                  if (regex.test(bid)) { // valid amount
+                    bid = +bid; // convert to number
+                    if (bid < topBid) { // too low
+                      alert(`Bid must be greater than top bid: ${topBid}`);
+                    }
+                    else if (bid < startPrice) { // too low
+                      alert(`Bid must be greater than start price: ${startPrice}`); 
+                    }
+                    else { // good! place the bid on the server.
+                      console.log(listingId, user.user_id, bid);
+                      fetch('/api/bid', 
+                        {method: 'POST', 
+                        body: JSON.stringify({'listingId': listingId, 'userId': user.user_id, 'bidAmount': bid}), 
+                        headers: {'Content-type': 'application/json'}
+                        })
+                      .then(response => response.json())
+                      .then(data => {
+                        console.log(data);
+                          alert(data.status)
+                          if (data.status == 'success') {
+                            setTriggerUpdate(Date.now());
+                          };
+                      })
+                    }
+                  } else {
+                    alert("Not a valid format or amount.") // bad format
+                  }
+                }}
               >
                 Place Bid
               </button>

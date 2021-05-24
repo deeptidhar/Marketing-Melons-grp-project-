@@ -5,6 +5,8 @@ function App() {
 
   const [user, setUser] = React.useState(false);
 
+  const [triggerUpdate, setTriggerUpdate] = React.useState(0);
+
   // Do this once, when the component mounts.
   React.useEffect(() => {
     setLoading(true);
@@ -15,7 +17,7 @@ function App() {
         setListings(listingData);
         setLoading(false);
       });
-  }, []);
+  }, [triggerUpdate]);
 
   return (
     <ReactRouterDOM.BrowserRouter>
@@ -35,21 +37,29 @@ function App() {
           Log In
         </ReactRouterDOM.NavLink>
       </Navbar>
-
       <div className="container-fluid">
+      
+      <ReactRouterDOM.Switch>
+      
         <ReactRouterDOM.Route exact path="/">
           {loading ? (<Loading />) : (<Homepage />)}
         </ReactRouterDOM.Route>
-      </div>
-      <ReactRouterDOM.Route exact path="/marketplace">
-          {user ? (loading ? (<Loading />) : (<MarketplacePage listings={listings}/>)) : (<div>Log in to view this page</div>)}
+      
+        <ReactRouterDOM.Route exact path="/marketplace">
+          {user ? (loading ? (<Loading />) : (<MarketplacePage setTriggerUpdate={setTriggerUpdate} user={user} listings={listings}/>)) : (<div>Log in to view this page</div>)}
         </ReactRouterDOM.Route>
+
         <ReactRouterDOM.Route exact path="/login">
           {loading ? (<Loading />) : (<LoginForm setUserInfo={setUser}/>)}
         </ReactRouterDOM.Route>
-        <ReactRouterDOM.Route exact path="/bid">
-          <BidForm />
+
+         {/* For any other URL, display page not found */}
+         <ReactRouterDOM.Route path="*">
+          <div>Page not found :(</div>
         </ReactRouterDOM.Route>
+
+        </ReactRouterDOM.Switch>
+        </div>
     </ReactRouterDOM.BrowserRouter>
   );
 }
