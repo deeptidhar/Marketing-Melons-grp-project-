@@ -25,7 +25,7 @@ class FlaskTestsBasic(TestCase):
         """Test landing page."""
 
         result = self.client.get("/")
-        self.assertIn(b"Welcome to the Marketplace", result.data)
+        self.assertIn(b"BitMelon - Bid on a Melon", result.data)
         self.assertEqual(result.status_code, 200)
     
 class FlaskTestsDatabase(TestCase):
@@ -46,7 +46,7 @@ class FlaskTestsDatabase(TestCase):
 
         self.user = crud.create_user(email='LarryJackson278@yahoo.com', password ='SgK167xD', name ='Larry Jackson')
         self.melon_category = crud.create_melon_category(is_seedless = False, name='Royal Golden Watermelon' , color='gold', melon_img_url='https://www.rareseeds.com/store/vegetables/watermelon/royal-golden-watermelon')
-        self.melon_listing = crud.create_melon_listing(name='Delicious Green Melon', seller_id=None, winner_id= None, end_date= '05/22/2021 01:30:15', description = 'One of the best', melon_category=None, is_sold = False)
+        self.melon_listing = crud.create_melon_listing(name='Delicious Green Melon', seller_id=None, end_date= '05/28/2021 01:30:15', description = 'One of the best', melon_category=None, start_price = 2.50)
         self.bid = crud.create_bid(user_id = None , melon_id = None, bid_amount=9.50, timestamp='05/30/2021')
 
         
