@@ -16,14 +16,7 @@ function LoginForm(props){
           props.setUserInfo(data);
           console.log('nice login');
           alert('You are logged in. Go buy some melons!');
-          
-          
-          document.location.href = '/marketplace';
-
-          // props.setShowComponent(true);
-
-          
-
+          // document.location.href = '/marketplace';
         } else {
           alert('Nope. That did not work. Try again?');
         }

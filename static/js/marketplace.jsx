@@ -3,10 +3,9 @@ function App() {
 
   const [loading, setLoading] = React.useState(false);
 
-  const [user, setUser] = React.useState({});
+  const [user, setUser] = React.useState(false);
 
   const [triggerUpdate, setTriggerUpdate] = React.useState(0);
-
 
   // Do this once, when the component mounts.
   React.useEffect(() => {

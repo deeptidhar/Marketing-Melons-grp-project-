@@ -59,6 +59,7 @@ def get_listings():
         top_bid_record = crud.get_top_bid(listing.melon_id)
         top_bid = None
         top_bidder = None
+        print(top_bid_record)
         if top_bid_record:
             top_bid = top_bid_record.bid_amount
             top_bidder = top_bid_record.bidder.name
