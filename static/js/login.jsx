@@ -14,10 +14,14 @@ function LoginForm(props){
         console.log(data);
         if (data !== null) {
           props.setUserInfo(data);
+          console.log('nice login');
           alert('You are logged in. Go buy some melons!');
-          // document.location.href = '/marketplace';
-          // console.log('nice login');
-          props.setShowComponent(true);
+          
+          
+          document.location.href = '/marketplace';
+
+          // props.setShowComponent(true);
+
           
 
         } else {
@@ -32,7 +36,7 @@ function LoginForm(props){
               <div class="col">
               <h1>Come on in and Bid on Some Melons!</h1>
               <form onSubmit={(evt) => {handleSubmit(evt)}}>
-                  <div class="form-group w-50">
+                  <div class="form-group w-25">
                       <div class="col-xs-2">
                           <label>Email</label>
                           <input class="form-control" type="text" name="email" id="email" onChange={ evt => {
