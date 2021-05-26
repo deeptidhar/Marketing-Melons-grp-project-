@@ -43,10 +43,10 @@ def place_bid():
         result = {'listingId': listing_id, 
                 'userId': user_id,
                 'bidAmount': bid_amount,
-                'status': 'success'
+                'status': 'Oh yeah! Juicy goodness is in your future!'
                 }
     else:
-        result = {'status': 'listing expired'}
+        result = {'status': 'You missed out. Our condolences. :(  Try another bid!'}
     return jsonify(result)
 
 

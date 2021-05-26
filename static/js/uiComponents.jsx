@@ -96,7 +96,7 @@ function ListingCard(props) {
                   if (regex.test(bid)) { // valid amount
                     bid = +bid; // convert to number
                     if (bid <= topBid) { // too low
-                      alert(`Bid must be greater than top bid: ${topBid}`);
+                      alert(`You're going to have to do better than that! Beat the top bid: ${topBid}`);
                     }
                     else if (bid < startPrice) { // too low
                       alert(`Bid must be greater than start price: ${startPrice}`); 
@@ -112,13 +112,13 @@ function ListingCard(props) {
                       .then(data => {
                         console.log(data);
                           alert(data.status)
-                          if (data.status == 'success') {
+                          if (data.status == 'Oh yeah! Juicy goodness is in your future!') {
                             setTriggerUpdate(Date.now());
                           };
                       })
                     }
                   } else {
-                    alert("Not a valid format or amount.") // bad format
+                    alert("Uh, you need to use real money here. Try a number.") // bad format
                   }
                 }}
               >

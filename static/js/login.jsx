@@ -14,14 +14,14 @@ function LoginForm(props){
         console.log(data);
         if (data !== null) {
           props.setUserInfo(data);
-          alert('Login successful');
-          document.location.href = '/marketplace';
-          // document.location.href = '/marketplace'; 
+          alert('You are logged in. Go buy some melons!');
+          // document.location.href = '/marketplace';
           // console.log('nice login');
+          props.setShowComponent(true);
           
 
         } else {
-          alert('Incorrect email or password.');
+          alert('Nope. That did not work. Try again?');
         }
  
       })
@@ -29,13 +29,26 @@ function LoginForm(props){
     }
  
     return (
-      <form onSubmit={(evt) => {handleSubmit(evt)}}>
-        <label>Email</label>
-        <input id='email' onChange={ evt => { setEmail(evt.target.value) } } />
-        <label>Password</label>
-        <input id='password' type='password' onChange={ evt => { setPassword(evt.target.value) } } />
-        <input type='submit' />
-      </form>
+              <div class="col">
+              <h1>Come on in and Bid on Some Melons!</h1>
+              <form onSubmit={(evt) => {handleSubmit(evt)}}>
+                  <div class="form-group w-50">
+                      <div class="col-xs-2">
+                          <label>Email</label>
+                          <input class="form-control" type="text" name="email" id="email" onChange={ evt => {
+                              setEmail(evt.target.value)
+                          }}/>
+                      </div>
+                      <div class="col-xs-2">
+                          <label>Password</label>
+                          <input class="form-control" type="password" name="password" id="password" onChange={ evt => {
+                              setPassword(evt.target.value)
+                          }}/>
+                      </div>
+                      <button type="submit" class="btn btn-primary active">Login</button>
+                  </div>
+              </form>
+          </div>
       );
 
   }
