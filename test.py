@@ -108,8 +108,5 @@ class FlaskTestsDatabase(TestCase):
 
 if __name__ == "__main__":
     
-    connect_to_db(app)
     
-    import unittest
-
     unittest.main()
