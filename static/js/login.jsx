@@ -15,13 +15,19 @@ function LoginForm(props){
         if (data !== null) {
           props.setUserInfo(data);
           alert('Login successful');
-        } else {
-          alert('Incorrect email or password.')
-        }
+          document.location.href = '/marketplace';
+          // document.location.href = '/marketplace'; 
+          // console.log('nice login');
+          
 
+        } else {
+          alert('Incorrect email or password.');
+        }
+ 
       })
+      
     }
-  
+ 
     return (
       <form onSubmit={(evt) => {handleSubmit(evt)}}>
         <label>Email</label>
@@ -30,5 +36,7 @@ function LoginForm(props){
         <input id='password' type='password' onChange={ evt => { setPassword(evt.target.value) } } />
         <input type='submit' />
       </form>
-      )
+      );
+
   }
+
