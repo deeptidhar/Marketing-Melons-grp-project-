@@ -43,10 +43,10 @@ def place_bid():
         result = {'listingId': listing_id, 
                 'userId': user_id,
                 'bidAmount': bid_amount,
-                'status': 'success'
+                'status': 'Oh yeah! Juicy goodness is in your future!'
                 }
     else:
-        result = {'status': 'listing expired'}
+        result = {'status': 'You missed out. Our condolences. :(  Try another bid!'}
     return jsonify(result)
 
 
@@ -59,6 +59,7 @@ def get_listings():
         top_bid_record = crud.get_top_bid(listing.melon_id)
         top_bid = None
         top_bidder = None
+        print(top_bid_record)
         if top_bid_record:
             top_bid = top_bid_record.bid_amount
             top_bidder = top_bid_record.bidder.name

@@ -46,7 +46,7 @@ function App() {
         </ReactRouterDOM.Route>
       
         <ReactRouterDOM.Route exact path="/marketplace">
-          {user ? (loading ? (<Loading />) : (<MarketplacePage setTriggerUpdate={setTriggerUpdate} user={user} listings={listings}/>)) : (<div>Log in to view this page</div>)}
+          {user ? (loading ? (<Loading />) : (<MarketplacePage setTriggerUpdate={setTriggerUpdate} user={user} listings={listings}/>)) : (<div><h1>Not so fast! You need to login to see our lovely melons!</h1></div>)}
         </ReactRouterDOM.Route>
 
         <ReactRouterDOM.Route exact path="/login">
