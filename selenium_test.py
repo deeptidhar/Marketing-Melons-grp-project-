@@ -43,16 +43,8 @@ class TestBidMelon(unittest.TestCase):
         db.engine.dispose()
         
 
-   # This test works
-    def test_title(self):
-        """Testing title of browser"""
-
-        self.browser.get('http://localhost:5000/')
-        self.assertEqual(self.browser.title, 'BitMelon - Bid on a Melon')
-
-    #This test works
-    def test_login_pass(self):
-        """Testing user login is successful"""
+    def login():
+        """Function to log in test user."""
 
         self.browser.get('http://localhost:5000/login')
         time.sleep(10)
@@ -67,6 +59,20 @@ class TestBidMelon(unittest.TestCase):
         btn.click()
 
         time.sleep(2)
+
+
+   # This test works
+    def test_title(self):
+        """Testing title of browser"""
+
+        self.browser.get('http://localhost:5000/')
+        self.assertEqual(self.browser.title, 'BitMelon - Bid on a Melon')
+
+    #This test works
+    def test_login_pass(self):
+        """Testing user login is successful"""
+
+        self.login()
 
         alert = self.browser.switch_to.alert
         self.assertEqual(alert.text, "You are logged in. Go buy some melons!")
@@ -99,31 +105,29 @@ class TestBidMelon(unittest.TestCase):
     # def test_bid(self):
     #     """Testing for users bids"""
 
-    #     self.browser.get('http://localhost:5000/login')
-    #     time.sleep(10)
-
-    #     email = self.browser.find_element_by_id('email')
-    #     email.send_keys("qwilliams@yahoo.com")
-    #     password = self.browser.find_element_by_id('password')
-    #     password.send_keys("12345678")
-
-    #     btn = self.browser.find_element_by_xpath("//button[@type='submit']")
-
-    #     btn.click()
-
-    #     time.sleep(10)
+    #     self.login()
 
     #     alert = self.browser.switch_to.alert
-    #     self.assertEqual(alert.text, "Nope. That did not work. Try again?")
     #     alert.accept()    
     #     print(" Clicked on the OK Button in the Alert Window")
 
-    #     self.browser.get('http://localhost:5000/marketplace')
     #     time.sleep(10)
 
-    #     bid_btn = self.browser.find_element_by_css_selector('name')
+    #     bid_btn = self.browser.find_element_by_id('2')
     #     bid_btn.click()
     #     time.sleep(2)
+
+    #     alert = self.browser.switch_to.alert
+    #     self.assertEqual(alert.text, "Enter $ amount")
+    #     alert.send_keys("100")
+
+    #     alert.accept()
+
+    #     time.sleep(2)
+
+    #     alert = self.browser.switch_to.alert
+    #     self.assertEqual(alert.text, "Oh yeah! Juicy goodness is in your future!")
+    #     alert.accept()
 
 
 if __name__ == "__main__":

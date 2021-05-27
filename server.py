@@ -1,5 +1,4 @@
 from flask import Flask, render_template, jsonify, request
-from model import connect_to_db
 import crud
 from datetime import datetime
 
@@ -98,6 +97,12 @@ def index(path):
 
 ###################################################
 if __name__ == "__main__":
-    connect_to_db(app)
-    #connect_to_db(app, "postgresql:///test_db")
+    from model import connect_to_db
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--db', help='db to use', nargs="?", default='marketplace')
+    args = parser.parse_args()
+    selected_db = args.db
+    print(selected_db)
+    connect_to_db(app, f'postgresql:///{selected_db}')
     app.run(debug=True, host='0.0.0.0')
