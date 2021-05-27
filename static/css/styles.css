@@ -9,6 +9,20 @@ line-height: 1.3;
 -webkit-font-smoothing: antialiased;
 }
 
+#header {
+  margin-top: 5px;
+  margin-left: 600px;
+}
+#header h4 {
+  margin-top: 5px;
+  margin-left: 150px;
+}
+
+#image {
+  margin-top: 5px;
+  margin-left: 250px;
+}
+
 .melon-card {
   max-width: 23%;
   margin: 0.5rem;
