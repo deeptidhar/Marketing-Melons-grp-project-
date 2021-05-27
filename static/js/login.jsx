@@ -1,6 +1,7 @@
 function LoginForm(props){
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const history = ReactRouterDOM.useHistory();
     
     function handleSubmit(evt){
       evt.preventDefault();
@@ -14,6 +15,7 @@ function LoginForm(props){
         console.log(data);
         if (data !== null) {
           props.setUserInfo(data);
+          history.push("/marketplace");
           console.log('nice login');
           alert('You are logged in. Go buy some melons!');
           // document.location.href = '/marketplace';
