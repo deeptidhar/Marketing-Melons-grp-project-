@@ -1,6 +1,6 @@
 """Testing flask routes and database in server.py"""
 
-from unittest import TestCase
+import unittest
 from flask import *
 from server import *
 from model import *
@@ -9,7 +9,7 @@ import sys
 import os
 
 
-class FlaskTestsBasic(TestCase):
+class FlaskTestsBasic(unittest.TestCase):
     """Flask tests."""
 
     def setUp(self):
@@ -28,7 +28,7 @@ class FlaskTestsBasic(TestCase):
         self.assertIn(b"BitMelon - Bid on a Melon", result.data)
         self.assertEqual(result.status_code, 200)
     
-class FlaskTestsDatabase(TestCase):
+class FlaskTestsDatabase(unittest.TestCase):
     """Flask tests that use the database."""
 
     def setUp(self):

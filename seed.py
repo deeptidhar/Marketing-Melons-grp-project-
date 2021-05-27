@@ -68,8 +68,8 @@ def create_example_data():
 
 
 if __name__ == '__main__':
-    os.system('dropdb test_db --if-exists')
-    os.system('createdb test_db')
+    os.system('dropdb marketplace-if-exists')
+    os.system('createdb marketplace')
     model.connect_to_db(server.app)
     model.db.create_all()
     create_example_data()
