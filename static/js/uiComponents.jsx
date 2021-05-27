@@ -1,12 +1,17 @@
 /////////////////////////////////////////////////////////////
 function Homepage(props) {
   return (
+    <React.Fragment>
     <div id="home-banner" className="row">
-      <div className="col">
-        <h1>BitMelon</h1>
-        <p className="lead">Marketplace for melons.</p>
+        <div id="header">
+        <h1>BitMelon - Marketplace for Melons<br></br></h1>
+        <h4><i>You know you want some.</i></h4>
+        </div>
+      <div class="col" id="image">
+          <img src='/static/img/background-277571_1280.jpg'></img>
       </div>
     </div>
+    </React.Fragment>
   );
 }
 
