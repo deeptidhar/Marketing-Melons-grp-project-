@@ -49,7 +49,7 @@ class TestBidMelon(unittest.TestCase):
     #     self.browser.get('http://localhost:5000/')
     #     self.assertEqual(self.browser.title, 'BitMelon - Bid on a Melon')
 
-    #This test works git 
+    #This test works
     # def test_login_pass(self):
     #     """Testing user login is successful"""
 
@@ -61,14 +61,14 @@ class TestBidMelon(unittest.TestCase):
     #     password = self.browser.find_element_by_id('password')
     #     password.send_keys("12345678")
 
-    #     btn = self.browser.find_element_by_xpath("//input[@type='submit']")
+    #     btn = self.browser.find_element_by_xpath("//button[@type='submit']")
 
     #     btn.click()
 
     #     time.sleep(2)
 
     #     alert = self.browser.switch_to.alert
-    #     self.assertEqual(alert.text, "Login successful")
+    #     self.assertEqual(alert.text, "You are logged in. Go buy some melons!")
     #     alert.accept()    
     #     print(" Clicked on the OK Button in the Alert Window")
         
@@ -85,17 +85,46 @@ class TestBidMelon(unittest.TestCase):
     #     password = self.browser.find_element_by_id('password')
     #     password.send_keys("mtate34")
 
-    #     btn = self.browser.find_element_by_xpath("//input[@type='submit']")
+    #     btn = self.browser.find_element_by_xpath("//button[@type='submit']")
 
     #     btn.click()
 
     #     time.sleep(2)
 
     #     alert = self.browser.switch_to.alert
-    #     self.assertEqual(alert.text, "Incorrect email or password.")
+    #     self.assertEqual(alert.text, "Nope. That did not work. Try again?")
         
 
-    #def test_bid(self):
+    def test_bid(self):
+        """Testing for users bids"""
+
+        self.browser.get('http://localhost:5000/login')
+        time.sleep(10)
+
+        email = self.browser.find_element_by_id('email')
+        email.send_keys("qwilliams@yahoo.com")
+        password = self.browser.find_element_by_id('password')
+        password.send_keys("12345678")
+
+        btn = self.browser.find_element_by_xpath("//button[@type='submit']")
+
+        btn.click()
+
+        time.sleep(10)
+
+        alert = self.browser.switch_to.alert
+        self.assertEqual(alert.text, "You are logged in. Go buy some melons!")
+        alert.accept()    
+        print(" Clicked on the OK Button in the Alert Window")
+
+        self.browser.get('http://localhost:5000/marketplace')
+        time.sleep(10)
+
+    #     btn = self.browser.find_element_by_css_selector("#btn btn-sm btn-success d-inline-block")
+
+    #     btn.click()
+    #     time.sleep(2)
+
 
 
 

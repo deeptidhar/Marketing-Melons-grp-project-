@@ -98,6 +98,6 @@ def index(path):
 
 ###################################################
 if __name__ == "__main__":
-    connect_to_db(app)
-    # connect_to_db(app, "postgresql:///test_db")
+    # connect_to_db(app)
+    connect_to_db(app, "postgresql:///test_db")
     app.run(debug=True, host='0.0.0.0')
