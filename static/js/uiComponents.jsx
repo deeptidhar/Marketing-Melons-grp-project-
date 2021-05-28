@@ -93,7 +93,7 @@ function ListingCard(props) {
               Top Bid: ${topBid == undefined ? 0 : topBid.toFixed(2)}
             </span>
             <p>Top Bidder: {topBidder}</p>
-            <button
+            <button id={listingId}
                 className="btn btn-sm btn-success d-inline-block"
                 onClick={() => {
                   const regex  = /^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;

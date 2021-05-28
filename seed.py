@@ -1,10 +1,6 @@
 """Script to seed a database"""
 
-import os
 import crud
-import model 
-import os
-import server
 from faker import Faker
 import csv
 from datetime import datetime, timedelta
@@ -68,8 +64,17 @@ def create_example_data():
 
 
 if __name__ == '__main__':
-    os.system('dropdb marketplace-if-exists')
-    os.system('createdb marketplace')
-    model.connect_to_db(server.app)
-    model.db.create_all()
+    import argparse
+    import os
+    from model import db, connect_to_db
+    from server import app
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--db', help='db to use', nargs="?", default='marketplace')
+    args = parser.parse_args()
+    selected_db = args.db
+    print(selected_db)
+    os.system(f'dropdb {selected_db} --if-exists')
+    os.system(f'createdb {selected_db}')
+    connect_to_db(app, f'postgresql:///{selected_db}')
+    db.create_all()
     create_example_data()
